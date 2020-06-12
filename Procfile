@@ -1,1 +1,1 @@
-worker: python app.py
+web: unicorn wsgi:app

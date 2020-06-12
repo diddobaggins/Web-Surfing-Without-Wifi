@@ -232,6 +232,3 @@ def sms():
         pickle.dump(database, f)
 
     return str(resp)
-
-if __name__ == "__main__":
-    app.run(debug=True)
