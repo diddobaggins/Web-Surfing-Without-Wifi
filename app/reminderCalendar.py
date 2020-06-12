@@ -1,5 +1,5 @@
-from reminder import Reminder
-from reminderTime import ReminderTime
+from app.reminder import Reminder
+from app.reminderTime import ReminderTime
 import datetime
 
 class ReminderCalendar:

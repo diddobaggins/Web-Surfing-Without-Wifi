@@ -1,4 +1,4 @@
-from reminderTime import ReminderTime # if time, move reminder up a day if its not deleted, and also code reminder delete
+from app.reminderTime import ReminderTime # if time, move reminder up a day if its not deleted, and also code reminder delete
 
 class Reminder:
     def __init__(self, reminderName, reminderTime, reminderDescription=""):

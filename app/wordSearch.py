@@ -1,5 +1,5 @@
 import random
-from fileReader import FileReader
+from app.fileReader import FileReader
 
 class WordSearch:  # add diagonal if time
 

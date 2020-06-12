@@ -1,14 +1,14 @@
-from wordSearch import WordSearch
-import search
+from app.tamagotchi import Tamagotchi
+from app.wordSearch import WordSearch
+from app.search import search
 import os
 import pickle
-from game import game
-from reminderCalendar import ReminderCalendar
-from reminder import Reminder
-from tamagotchi import Tamagotchi
+from app.game import game
+from app.reminderCalendar import ReminderCalendar
+from app.reminder import Reminder
 import threading
 import time
-from reminderTime import ReminderTime
+from app.reminderTime import ReminderTime
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
