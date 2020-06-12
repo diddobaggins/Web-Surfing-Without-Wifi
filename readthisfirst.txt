@@ -1,0 +1,5 @@
+Hello Mr. Janetka. This is our project. Unfortunately, you cannot test it yourself unless you tell us when you would like to test so that we can run our app during that time. In order to compensate, we enclosed a pictures
+of me testing the different functions in our app. I tried for hours to find a way to host our app on a cloud service so that you could test it, but at 4:30am I am officially giving up so I hope
+that the enclosed pictures and our code will be sufficient. If we find a way to upload the app we will let you know. 
+
+Also, all our our code is inside the app folder. You can ignore everything outside of it.
