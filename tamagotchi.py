@@ -3,7 +3,7 @@ import random
 import time
 now = datetime.datetime.now()
 
-class Tamagotchi: # yikes
+class Tamagotchi: # yikes o
 
     def __init__(self, name):
         self.sleepTimer = 100
