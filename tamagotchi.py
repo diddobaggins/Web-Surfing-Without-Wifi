@@ -153,4 +153,4 @@ class Tamagotchi: # yikes o
             self.drawing = self.expression
             self.drawing += "*"*self.pooDroppings
             self.capValues()
-        time.sleep(2)
+        time.sleep(5)
