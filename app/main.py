@@ -1,6 +1,6 @@
 from app.tamagotchi import Tamagotchi
 from app.wordSearch import WordSearch
-from app.search import search
+from app.search import Search
 import os
 import pickle
 from app.game import game
@@ -174,13 +174,13 @@ def sms():
 
     elif params[0].lower() == 'google':
         if len(params) > 1:
-            result = search.google(body[7:])
+            result = Search.google(body[7:])
             resp.message("Here is Google's top result:\n" + result)
         else:
             resp.message("Please enter your search terms after 'google'.")
     elif params[0].lower() == 'translate':
         if len(params) >= 3:
-            msg = search.translate(" ".join(params[2:]), params[1].lower())
+            msg = Search.translate(" ".join(params[2:]), params[1].lower())
             if msg == "":
                 resp.message("An error occurred during translation.")
             else:
@@ -192,7 +192,7 @@ def sms():
                          "and TEXT is the message to be translated.")
     elif params[0].lower() == 'wiki':
         if len(params) > 1:
-            result = search.wiki(body[5:])
+            result = Search.wiki(body[5:])
             if len(result) < 1530:
                 resp.message("Information from Wikipedia:\n" + result)
             else:
@@ -206,14 +206,14 @@ def sms():
             resp.message("Please enter your search terms after 'wiki'.")
     elif params[0].lower() == 'weather':
         if len(params) > 1:
-            resp.message(search.weather(body[8:]))
+            resp.message(Search.weather(body[8:]))
         else:
-            resp.message(search.weather())
+            resp.message(Search.weather())
     elif params[0].lower() == 'news':
         if len(params) > 1:
-            resp.message(search.news(body[5:]))
+            resp.message(Search.news(body[5:]))
         else:
-            resp.message(search.news(""))
+            resp.message(Search.news(""))
     elif params[0].lower() == 'play':
         if 'players' not in database:
             database['players'] = {}
