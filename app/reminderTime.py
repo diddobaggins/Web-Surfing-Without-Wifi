@@ -32,7 +32,7 @@ class ReminderTime:
         if self.day > other.day:
             return False
         if self.allDay or other.allDay:
-            returnTrue
+            return True
         if self.hour < other.hour:
             return True
         if self.hour > other.hour:

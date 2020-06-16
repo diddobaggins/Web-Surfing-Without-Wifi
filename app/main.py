@@ -60,35 +60,36 @@ def sms():
 
 
     elif params[0].lower() == 'reminders' and params[1].lower() == 'add':
-        try:
-            params = params[1:]
-            warning = ""
-            if sender not in reminderStorage:
-                reminderStorage[sender] = ReminderCalendar()
-            rc = reminderStorage[sender]
-            rTitle = body.split("title:")[1].split("date")[0].rstrip().lstrip()
-            if params[1] != "yes":
-                rDate = body.split("date:")[1].split("time")[0].rstrip().lstrip()
-                if "end:" in params:
-                    rTime = body.split("time:")[1].split("end")[0].rstrip().lstrip()
-                    rEndTime = body.split("end:")[1].rstrip().lstrip()
-                    print(body.split("time:"))
-                    rt = ReminderTime(False, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]), int(rTime[:2]), int(rTime[3:]), int(rEndTime[:2]), int(rEndTime[3:]))
-                    if rc.hasConflicts(Reminder(rTitle, rt)):
-                        warning = "\nWarning, your event may have a conflict."
-                else:
-                    rTime = body.split("time:")[1].rstrip().lstrip()
-                    rt = ReminderTime(False, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]), int(rTime[:2]), int(rTime[3:]))
+    #    try:
+        params = params[1:]
+        warning = ""
+        if sender not in reminderStorage:
+            reminderStorage[sender] = ReminderCalendar()
+            print( 'reset')
+        rc = reminderStorage[sender]
+        rTitle = body.split("title:")[1].split("date")[0].rstrip().lstrip()
+        if params[1] != "yes":
+            rDate = body.split("date:")[1].split("time")[0].rstrip().lstrip()
+            if "end:" in params:
+                rTime = body.split("time:")[1].split("end")[0].rstrip().lstrip()
+                rEndTime = body.split("end:")[1].rstrip().lstrip()
+                print(body.split("time:"))
+                rt = ReminderTime(False, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]), int(rTime[:2]), int(rTime[3:]), int(rEndTime[:2]), int(rEndTime[3:]))
+                if rc.hasConflicts(Reminder(rTitle, rt)):
+                    warning = "\nWarning, your event may have a conflict."
             else:
-                rDate = body.split("date:")[1].rstrip().lstrip()
-                print(rDate)
-                rt = ReminderTime(True, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]))
-            rc.addReminder(Reminder(rTitle, rt))
-            resp.message(warning)
-            print(reminderStorage)
-        except:
-            responseMessage = "You may have typed something in wrong!\n\nThe format is: 'reminders add allday title: stringtitle date: yyyy/mm/dd time: (if notallday) hh:mm endtime: (if applicable) hh:mm'\n\nThe time is 24 hour time!"
-            resp.message(responseMessage)
+                rTime = body.split("time:")[1].rstrip().lstrip()
+                rt = ReminderTime(False, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]), int(rTime[:2]), int(rTime[3:]))
+        else:
+            rDate = body.split("date:")[1].rstrip().lstrip()
+            print(rDate)
+            rt = ReminderTime(True, int(rDate[0:4]), int(rDate[5:7]), int(rDate[8:]))
+        rc.addReminder(Reminder(rTitle, rt))
+        resp.message(warning)
+        print(reminderStorage)
+        #except:
+        #    responseMessage = "You may have typed something in wrong!\n\nThe format is: 'reminders add allday title: stringtitle date: yyyy/mm/dd time: (if notallday) hh:mm endtime: (if applicable) hh:mm'\n\nThe time is 24 hour time!"
+            #resp.message(responseMessage)
 
     elif params[0].lower() == "reminders" and params[1].lower() == "all":
         rc = reminderStorage[sender]
